@@ -1,34 +1,71 @@
-# Lending Club Loan Default Prediction Analysis
+# Lending Club Loan Default Analysis
 
-This repository contains a comprehensive analysis of Lending Club loan data, focusing on building a predictive model for loan default and preparing data for interactive visualization in Tableau.
+**Sector:** Finance | **Dataset:** Lending Club 2007–2020 Q3 | **Rows:** 2.9M
 
-## Project Overview
+---
 
-The goal of this project is to:
-1.  **Clean and preprocess** a large dataset of historical Lending Club loan applications.
-2.  **Perform Exploratory Data Analysis (EDA)** to understand trends, distributions, and relationships related to loan default.
-3.  **Conduct statistical analysis** to identify key factors influencing default risk.
-4.  **Develop a preliminary predictive model** using Logistic Regression.
-5.  **Prepare aggregated datasets** for interactive dashboards in Tableau.
+## Problem Statement
 
-## Dataset
+What borrower, loan, and geographic factors drive loan default rates across 13 years of US peer-to-peer lending?
 
-The primary dataset used is the Lending Club Loan Status data from 2007-2020Q3 (`Loan_status_2007-2020Q3.gzip`). It contains detailed information about loan applicants, loan characteristics, and repayment status.
+LendingClub is the world's largest peer-to-peer lending platform, with $15.98 billion in loans originated through December 2015. Understanding what drives loan defaults is critical for risk management, credit pricing, and borrower assessment.
+
+## Key Findings
+
+| KPI | Value |
+|-----|-------|
+| Overall Default Rate | 13.08% |
+| Peak Default Year | 2007 (26%) — financial crisis |
+| Highest Default Grade | G (≈45%) vs A (≈4%) |
+| Strongest Predictor | Interest rate (correlation = +0.21) |
+| Logistic Regression ROC-AUC | 0.6887 |
 
 ## Folder Structure
 
-*   `data/raw/`: Contains the original raw dataset.
-*   `data/processed/`: Stores cleaned, preprocessed, and aggregated datasets.
-*   `notebooks/`: Contains the Jupyter/Colab notebooks documenting the analysis steps.
-*   `tableau/screenshots/`: Stores screenshots of key visualizations from EDA and potentially Tableau dashboards.
-*   `tableau/dashboard_links.md`: A markdown file to link to published Tableau dashboards.
-*   `docs/`: Contains supplementary documentation, such as the data dictionary.
+```
+lending_club_data_analysis/
+├── README.md                  ← You are here
+├── data/
+│   ├── raw/                   ← Original dataset info & sample
+│   └── processed/             ← Cleaned CSVs & Tableau exports
+├── docs/
+│   └── data_dictionary.md     ← Column descriptions & definitions
+├── notebooks/
+│   ├── 01_data_loading.ipynb          ← Download & initial load
+│   ├── 02_cleaning.ipynb              ← Full ETL pipeline
+│   ├── 03_eda.ipynb                   ← Exploratory data analysis
+│   ├── 04_statistical_analysis.ipynb  ← T-tests, chi-square, logistic regression
+│   └── 05_final_load_prep.ipynb       ← Tableau export preparation
+└── tableau/
+    ├── dashboard_links.md     ← Tableau Public URL
+    └── screenshots/           ← EDA charts & dashboard screenshots
+```
 
-## Analysis Highlights
+## Dataset
 
--   **Data Cleaning:** Handled missing values, converted data types, and capped outliers.
--   **Feature Engineering:** Derived new features like `credit_age_months`, `fico_avg`, and `loan_to_income`.
--   **EDA:** Visualized default rates by year, grade, state, loan amount distribution, and more.
--   **Statistical Analysis:** Performed T-tests, Chi-square tests, and built a Logistic Regression model to identify significant predictors of loan default.
--   **Tableau Export:** Prepared aggregated data for Tableau, including default rates by state, year, grade, and purpose.
+- **Source:** [Kaggle — Lending Club 2007–2020 Q3](https://www.kaggle.com/datasets/ethon0426/lending-club-20072020q1)
+- **Size:** 2,925,493 rows × 31 selected columns
+- **Format:** gzip-compressed CSV
+- **Issues addressed:** Missing values, inconsistent formats, percentage strings, date parsing, outlier capping
 
+## Tools & Technologies
+
+| Tool | Purpose |
+|------|---------|
+| Python (pandas) | ETL pipeline, data cleaning |
+| scipy | Statistical hypothesis testing |
+| scikit-learn | Logistic regression, ROC-AUC |
+| matplotlib / seaborn | EDA visualisations |
+| Tableau Public | Interactive dashboard |
+| GitHub | Version control & collaboration |
+
+## Dashboard
+
+📊 **Tableau Public URL:** [To be added after publishing]
+
+## How to Reproduce
+
+1. Clone this repository
+2. Run `notebooks/01_data_loading.ipynb` to download the dataset via kagglehub
+3. Run notebooks 02 through 05 in order
+4. Open the Tableau dashboard via the URL in `tableau/dashboard_links.md`
