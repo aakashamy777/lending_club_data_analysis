@@ -1,0 +1,7 @@
+# .gitignore
+
+# Ignore common temporary files and system files
+__pycache__/
+.DS_Store
+.env
+*.pyc
