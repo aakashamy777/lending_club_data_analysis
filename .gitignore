@@ -5,3 +5,16 @@ __pycache__/
 .DS_Store
 .env
 *.pyc
+.gitkeep
+
+# Jupyter generated files
+.ipynb_checkpoints/
+
+# Local environments
+.venv/
+venv/
+env/
+
+# Raw Lending Club source data can be very large.
+data/raw/*
+!data/raw/README.md
